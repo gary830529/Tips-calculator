@@ -30,13 +30,48 @@
     display: block;
     margin-top: 10px;
 }
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line on smaller screens */
+    gap: 5px; /* Optional: adds space between buttons */
+    justify-content: flex-start; /* Aligns buttons to the start of the container */
+}
+
+/* Individual button style */
+.tip-btn, .service-btn, .food-btn, .checkbox-label {
+    flex: 0 0 80px; /* flex-grow, flex-shrink, flex-basis */
+    height: 40px; /* Set a fixed height for all buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5px; /* Optional: adds vertical space between wrapped buttons */
+    padding: 5px; /* Adjust padding to fit content */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+/* Checkbox label style (if you're using labels as buttons for checkboxes) */
+.checkbox-label {
+    flex: 0 0 auto; /* Don't stretch the label button */
+    width: auto; /* Let the label size according to its content */
+}
+
+/* Ensure input fields do not break layout */
+input[type="number"], input[type="checkbox"] {
+    width: auto; /* Prevents input fields from stretching */
+    margin-right: 5px; /* Adds space after input field */
+}
 </style>   
 
     <p>Select tip percentage:</p>
+    <div class="button-container">
     <button class="tip-btn" data-value="15" onclick="setTipPercentage(15)">15%</button>
     <button class="tip-btn" data-value="18" onclick="setTipPercentage(18)">18%</button>
-    
+    </div>
+
     <p>Based on <b>service quality</b>, add:</p>
+    <div class="button-container">
     <button class="service-btn" data-value="-3"  onclick="adjustTip(-3)">-3%</button>
     <button class="service-btn" data-value="-2"  onclick="adjustTip(-2)">-2%</button>
     <button class="service-btn" data-value="-1"  onclick="adjustTip(-1)">-1%</button>
@@ -44,8 +79,9 @@
     <button class="service-btn" data-value="1"  onclick="adjustTip(1)">+1%</button>
     <button class="service-btn" data-value="2"  onclick="adjustTip(2)">+2%</button>
     <button class="service-btn" data-value="3"  onclick="adjustTip(3)">+3%</button>
-
+    </div>
     <p>Based on <b>food quality</b>, add:</p>
+    <div class="button-container">
     <button class="food-btn" data-value="-3" onclick="adjustForFoodQuality(-3)">-3%</button>
     <button class="food-btn" data-value="-2" onclick="adjustForFoodQuality(-2)">-2%</button>
     <button class="food-btn" data-value="-1" onclick="adjustForFoodQuality(-1)">-1%</button>
@@ -53,7 +89,8 @@
     <button class="food-btn" data-value="1" onclick="adjustForFoodQuality(1)">+1%</button>
     <button class="food-btn" data-value="2" onclick="adjustForFoodQuality(2)">+2%</button>
     <button class="food-btn" data-value="3" onclick="adjustForFoodQuality(3)">+3%</button>
-
+    </div>
+    
     <p></p>
     
     <div class="checkbox-group">
